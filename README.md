@@ -1,8 +1,15 @@
 # pinprompt
 
-**Click your UI, type what you want, paste an exact prompt into your AI.**
+[![npm](https://img.shields.io/npm/v/pinprompt)](https://www.npmjs.com/package/pinprompt)
+[![downloads](https://img.shields.io/npm/dw/pinprompt)](https://www.npmjs.com/package/pinprompt)
+[![CI](https://github.com/ueqeb/pinprompt/actions/workflows/ci.yml/badge.svg)](https://github.com/ueqeb/pinprompt/actions/workflows/ci.yml)
+[![Socket](https://socket.dev/api/badge/npm/package/pinprompt)](https://socket.dev/npm/package/pinprompt)
+![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+[![license](https://img.shields.io/npm/l/pinprompt)](LICENSE)
 
-A dev-only Vite plugin for SvelteKit. Instead of describing elements in words, you click them, and pinprompt writes where they live in your code. Built for Claude Code; the output is plain text, so any AI can read it.
+**Stop describing where to change, waiting for your AI to find it, and paying for the search.**
+
+Click elements in your SvelteKit app; pinprompt puts their exact source location in your prompt.
 
 ```
 move [click] above [click]
@@ -22,15 +29,11 @@ move [1] above [2]
 
 ## Why
 
-**For you**
-- Point instead of describing. No hunting for file names and line numbers.
-- Pick the exact instance: which card, which loop item, which component usage.
-- Works where you already are: your running app, your AI tool, your clipboard.
-
-**For your AI**
-- Goes straight to `file:line` instead of searching the codebase.
-- Fewer turns, fewer tokens, fewer edits to the wrong element.
-- Compact on purpose: no framework internals, no whole files pulled into context.
+| Pain | With pinprompt |
+|---|---|
+| Describing exactly where to change | Click it. The prompt gets `file:line`, the component and which loop item |
+| Waiting while the AI searches | It goes straight to the line: **2.4× faster** |
+| Paying for that search | Fewer turns and tokens: **39% cheaper** |
 
 ## Benchmark
 

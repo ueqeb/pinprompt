@@ -1,7 +1,7 @@
 {
 	"name": "pinprompt",
 	"version": "0.0.1-alpha.0",
-	"description": "Point at your app, say what you want, and paste a prompt that tells your AI exactly which code you mean.",
+	"description": "Click your SvelteKit UI to tell your AI exactly where to change. Less describing, waiting and paying.",
 	"keywords": [
 		"svelte",
 		"sveltekit",
@@ -27,6 +27,7 @@
 	"engines": {
 		"node": ">=18"
 	},
+	"packageManager": "pnpm@12.9.1",
 	"files": [
 		"dist"
 	],
