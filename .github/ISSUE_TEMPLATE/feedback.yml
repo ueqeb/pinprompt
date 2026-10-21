@@ -1,0 +1,29 @@
+name: Feedback
+description: Tried pinprompt? Tell us whether it helped.
+labels: [feedback]
+body:
+  - type: dropdown
+    id: helped
+    attributes:
+      label: Did it make your AI work faster or cheaper?
+      options: [Clearly yes, A little, No difference, It got in the way]
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: What did you use it for, and how did it go?
+      description: A real task or two. What worked, what didn't, what you'd change.
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: A prompt it generated (optional)
+      description: Paste one if you can. It's the fastest way for us to improve the output.
+      render: text
+  - type: input
+    id: setup
+    attributes:
+      label: Setup
+      placeholder: e.g. SvelteKit 2.50, Vite 6, Claude Code, Chrome

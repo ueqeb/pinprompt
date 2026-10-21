@@ -1,0 +1,66 @@
+{
+	"name": "pinprompt",
+	"version": "0.0.1-alpha.0",
+	"description": "Point at your app, say what you want, and paste a prompt that tells your AI exactly which code you mean.",
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"vite",
+		"vite-plugin",
+		"ai",
+		"claude",
+		"claude-code",
+		"prompt",
+		"devtools"
+	],
+	"homepage": "https://github.com/ueqeb/pinprompt#readme",
+	"bugs": "https://github.com/ueqeb/pinprompt/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ueqeb/pinprompt.git"
+	},
+	"license": "AGPL-3.0-only",
+	"type": "module",
+	"bin": {
+		"pinprompt": "dist/cli.js"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./vite": {
+			"types": "./dist/vite.d.ts",
+			"import": "./dist/vite.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "vite build && tsc -p tsconfig.build.json",
+		"dev": "pnpm build && pnpm run --parallel \"/^dev:/\"",
+		"dev:lib": "vite build --watch",
+		"dev:playground": "pnpm --filter playground dev",
+		"test": "vitest",
+		"check": "svelte-check",
+		"prepublishOnly": "pnpm build && vitest run"
+	},
+	"peerDependencies": {
+		"vite": "^6.0.0 || ^7.0.0 || ^8.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@types/node": "^22.20.5",
+		"happy-dom": "^21.0.4",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.7.7",
+		"typescript": "^6.0.3",
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5"
+	}
+}

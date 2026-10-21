@@ -1,0 +1,29 @@
+name: Bug report
+description: Something doesn't work as described.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The smallest set of steps, ideally with the element or component involved.
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Generated prompt (if relevant)
+      render: text
+  - type: input
+    id: setup
+    attributes:
+      label: Setup
+      placeholder: e.g. pinprompt 0.0.1-alpha.0, SvelteKit 2.50, Vite 6.4, Chrome 141
+    validations:
+      required: true
