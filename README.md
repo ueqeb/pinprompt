@@ -11,6 +11,8 @@
 
 Click elements in your SvelteKit app; pinprompt puts their exact source location in your prompt.
 
+![pinprompt demo: open the bar, click two elements, press Enter, get a prompt with file:line references](docs/demo.gif)
+
 ```
 move [click] above [click]
 ```
