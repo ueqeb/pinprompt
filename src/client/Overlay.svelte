@@ -41,6 +41,10 @@
 			if (e.altKey && !e.ctrlKey && !e.metaKey && e.code === 'KeyP') {
 				e.preventDefault();
 				toggle();
+			} else if (e.key === 'Escape' && output && e.composedPath().includes(host)) {
+				// Esc from inside the overlay (result text or buttons) dismisses the result.
+				e.preventDefault();
+				dismiss();
 			}
 		};
 		window.addEventListener('keydown', onKey, true);
@@ -126,13 +130,6 @@
 		status = '';
 	}
 
-	function onResultKeydown(e: KeyboardEvent) {
-		if (e.key === 'Escape') {
-			e.preventDefault();
-			dismiss();
-		}
-	}
-
 	function onKeydown(e: KeyboardEvent) {
 		// Enter while an input method (Japanese, Chinese...) is composing confirms the text, not the prompt.
 		if (e.isComposing || e.keyCode === 229) return;
@@ -191,12 +188,15 @@
 			</ul>
 		{/if}
 		{#if output}
-			<button bind:this={result} class="output" onclick={copy} onkeydown={onResultKeydown} title="Copy again">
-				<pre>{output}</pre>
-			</button>
+			<!-- Selectable: copy just part of it with ⌘C/Ctrl+C. -->
+			<!-- Focusable so Esc still reaches the overlay after clicking into the text. -->
+			<pre class="output" tabindex="-1" oncopy={() => ((status = 'Copied selection'), (failed = false))}>{output}</pre>
 			<div class="hint">
-				<span><span class="status" class:failed>{status || 'Copied'}</span> · click to copy again · Esc dismiss</span>
-				<button class="dismiss" onclick={dismiss} title="Dismiss">✕</button>
+				<span><span class="status" class:failed>{status || 'Copied'}</span> · select to copy part · Esc dismiss</span>
+				<span class="actions">
+					<button bind:this={result} class="copy" onclick={copy}>Copy all</button>
+					<button class="dismiss" onclick={dismiss} title="Dismiss">✕</button>
+				</span>
 			</div>
 		{:else}
 			<textarea
@@ -302,28 +302,38 @@
 		color: #f87171;
 	}
 	.output {
-		display: block;
-		width: 100%;
 		max-height: 40vh;
 		overflow: auto;
+		margin: 0;
 		padding: 6px 8px;
 		border: 1px solid #3f3f46;
 		border-radius: 6px;
 		background: #09090b;
-		color: inherit;
-		text-align: left;
-		cursor: copy;
-	}
-	.output:hover,
-	.output:focus-visible {
-		border-color: #3b82f6;
-		outline: none;
-	}
-	.output pre {
-		margin: 0;
 		font: 12px/1.45 ui-monospace, monospace;
 		white-space: pre-wrap;
 		word-break: break-word;
+		user-select: text;
+		cursor: text;
+		outline: none;
+	}
+	.actions {
+		display: flex;
+		gap: 6px;
+		align-items: center;
+	}
+	.copy {
+		padding: 1px 8px;
+		border: 1px solid #3f3f46;
+		border-radius: 4px;
+		background: #27272a;
+		color: #fafafa;
+		font: inherit;
+		cursor: pointer;
+	}
+	.copy:hover,
+	.copy:focus-visible {
+		border-color: #3b82f6;
+		outline: none;
 	}
 	.dismiss {
 		padding: 0 4px;

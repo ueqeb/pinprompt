@@ -168,7 +168,7 @@ All outputs: `src/targets/__snapshots__/claude-code.test.ts.snap`.
 - **↑/↓ while hovering** widens to the parent / narrows back, so whole cards and sections can be picked.
 - **Picked elements get numbered, colored outlines** (repositioned every frame while open), the way a spreadsheet colors referenced cells. A hover box shows `Component <tag> "text" · file:line` before you click.
 - **The draft survives reloads** (text, resolved refs, open state; `sessionStorage`, per tab). Reloads are constant while an AI edits the code, and SvelteKit does full reloads when it regenerates `.svelte-kit/generated`. Refs survive; outlines come back only for elements picked again.
-- **Enter** renders with the target, delivers (clipboard, with an `execCommand` fallback for non-secure LAN dev URLs) and **shows the result** in the bar. Clicking it copies again; it stays until dismissed (✕ or Esc), survives closing the bar and reloads, and pauses picking while shown.
+- **Enter** renders with the target, delivers (clipboard, with an `execCommand` fallback for non-secure LAN dev URLs) and **shows the result** in the bar as selectable text: select part of it and copy with ⌘C/Ctrl+C, or use **Copy all**. It stays until dismissed (✕, or Esc from inside the overlay), survives closing the bar and reloads, and pauses picking while shown.
 - **Esc** in the prompt closes the bar and keeps the draft.
 
 ## How the pieces load

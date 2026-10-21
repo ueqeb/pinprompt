@@ -70,7 +70,7 @@ Start your dev server, then:
 | **Alt+P** | open the prompt bar |
 | click | reference an element |
 | **↑ / ↓** | widen to the parent element / narrow back |
-| **Enter** | copy the prompt |
+| **Enter** | copy the prompt (it stays shown: copy all again, or select just a part) |
 | **Esc** | close (your draft is kept) |
 
 ## Feedback wanted
