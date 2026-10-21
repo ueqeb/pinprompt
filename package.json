@@ -1,6 +1,6 @@
 {
 	"name": "pinprompt",
-	"version": "0.0.1-alpha.0",
+	"version": "0.0.1-alpha.1",
 	"description": "Click your SvelteKit UI to tell your AI exactly where to change. Less describing, waiting and paying.",
 	"keywords": [
 		"svelte",
